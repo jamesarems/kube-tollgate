@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+
+    <title>Kubernetes Toll-Gate</title>
+  </head>
+  <body>
+  <div class=container>
+
+  <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <b>Kube <font color=red>Toll</font>-<font color=gray>Gate</font></b>
+  </a>
+  </nav>
+
+</br>
+
+	<div class="container rounded-pill">
+	<h3><b>Hello {{name}}<font color=red>,</font></b></h3>
+
+	
+	</br>
+	Please follow this notes to configure kubectl with openID.
+
+	</br>
+
+	<b>Step 1</b> <font color=red>.</font> Ensure that you have cluster kubeconfig available or Ask your administrator.
+	</br>
+	<b>Step 2</b> <font color=red>.</font> Copy and run below command on your terminal,
+
+<div class="card bg-light mb-3 rounded-pill" style="max-width: 70rem;">
+  <div class="card-body">
+    <p class="card-text">kubectl config set-credentials {{name}} --auth-provider=oidc --auth-provider-arg=idp-issuer-url={{iss}} --auth-provider-arg=client-id=kubernetes --auth-provider-arg=client-secret=8c2a1d1f-8573-4440-baef-c7d2e9e65fb9 --auth-provider-arg=refresh-token={{refresh}} --auth-provider-arg=id-token={{access}}</p>
+  </div>
+</div>
+
+	
+	</div>
+
+<center>Opensource Project - <a href="https://github.com/jamesarems">Kube Toll-Gate</a> - ( <font color=gray>Logout Out ? <a href="/logout">Yes</a></font> )</center>
+
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="static/jquery-3.2.1.slim.min.js"</script>
+    <script src="static/popper.min.js"</script>
+    <script src="static/bootstrap.min.js"</script>
+  </body>
+</html>

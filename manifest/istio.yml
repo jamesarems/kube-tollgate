@@ -1,0 +1,51 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: toll-gw
+  namespace: kube-tollgate
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    #Add your hostname  
+      - "yourhost"
+    tls:
+      httpsRedirect: true  
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+    hosts:
+    #Add your hostname  
+    - "yourhost"
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: toll-vs
+  namespace: kube-tollgate 
+spec:
+  hosts:
+  #Add your hostname  
+  - "yourhost"
+  gateways:
+  - toll-gw
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 2222
+        host: kube-tollgate-svc
