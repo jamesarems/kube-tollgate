@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kube-tollgate-svc
-  namespace: kube-tollgate
+  namespace: tollgate
   labels:
     app: kube-tollgate
 spec:
@@ -19,7 +19,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: kube-tollgate
+  namespace: tollgate
   name: kube-tollgate-app
   labels:
     app: kube-tollgate

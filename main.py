@@ -52,6 +52,10 @@ def logout():
     #response.set_cookie(OIDC.id_token_cookie_name, expires=0)
     #return response
 
+@app.route('/checkin')
+def checkin():
+    return render_template('checkin.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=2222)
