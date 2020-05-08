@@ -21,7 +21,7 @@ app.config.update({
 oidc = OpenIDConnect(app)
 
 
-@app.route('/')
+@app.route('/checkin')
 def home():
     if oidc.user_loggedin:
         info = oidc.user_getinfo(['preferred_username', 'email', 'sub', 'given_name', 'iss'])
@@ -40,9 +40,10 @@ def home():
 @app.route('/login')
 @oidc.require_login
 def login():
+    print('Helloo')
     info = oidc.user_getinfo(['preferred_username', 'email', 'sub'])
     username = info.get('preferred_username')
-    return redirect('/')
+    return redirect('/checkin')
 
 @app.route('/logout')
 def logout():
@@ -52,7 +53,7 @@ def logout():
     #response.set_cookie(OIDC.id_token_cookie_name, expires=0)
     #return response
 
-@app.route('/checkin')
+@app.route('/')
 def checkin():
     return render_template('checkin.html')
 

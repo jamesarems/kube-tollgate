@@ -1,32 +1,31 @@
 ---
-
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kube-tollgate
+  name: tollgate
   #labels:
   #  istio-injection: enabled
-
 ---
 apiVersion: v1
+data:
+  client_secrets.json: |
+    {
+        "web": {
+            "issuer": "",
+            "auth_uri": "",
+            "client_id": "",
+            "client_secret": "",
+            "redirect_uris": [
+                ""
+            ],
+            "userinfo_uri": "",
+            "token_uri": "",
+            "token_introspection_uri": "",
+            "end_session_endpoint": ""
+        }
+    }
 kind: ConfigMap
 metadata:
   name: kube-tollgate-config
-  namespace: kube-tollgate
-data:
-  game-special-key: |
-{
-    "web": {
-        "issuer": "",
-        "auth_uri": "",
-        "client_id": "",
-        "client_secret": "",
-        "redirect_uris": [
-            ""
-        ],
-        "userinfo_uri": "",
-        "token_uri": "",
-        "token_introspection_uri": "",
-        "end_session_endpoint": ""
-    }
-}
+  namespace: tollgate
+

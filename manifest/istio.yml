@@ -1,3 +1,5 @@
+## INFO : There are some issues with istio SSL connection. Nginx ingress works fine with SSL
+
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
