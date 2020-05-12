@@ -4,7 +4,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: toll-gw
-  namespace: kube-tollgate
+  namespace: tollgate
 spec:
   selector:
     istio: ingressgateway # use Istio default gateway implementation
@@ -35,7 +35,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: toll-vs
-  namespace: kube-tollgate 
+  namespace: tollgate 
 spec:
   hosts:
   #Add your hostname  
